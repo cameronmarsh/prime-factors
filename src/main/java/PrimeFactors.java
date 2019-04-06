@@ -9,16 +9,20 @@ public class PrimeFactors {
         if (num == 1) {
             return Arrays.asList(1);
         } else {
-            while (num % 2 == 0) {
-                factors.add(2);
-                num /= 2;
-            }
-
-            if (num > 1) {
-                factors.add(num);
+            int divisor = 2;
+            while(num > 1 & divisor <= num) {
+                while (num % divisor == 0) {
+                    factors.add(divisor);
+                    num /= divisor;
+                }
+                divisor++;
             }
         }
 
         return factors;
+    }
+
+    private boolean isDivisibleByTwo(int num) {
+        return num % 2 == 0;
     }
 }

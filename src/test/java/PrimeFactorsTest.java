@@ -76,4 +76,22 @@ public class PrimeFactorsTest {
 
         assertThat(factors, is(expected));
     }
+
+
+    @Test
+    public void givenNineReturnsListOfTwoThrees() {
+        List<Integer> factors = primeFactors.generate(9);
+        List<Integer> expected = asList(3, 3);
+
+        assertThat(factors, is(expected));
+    }
+
+
+    @Test
+    public void givenTwentyOneReturnsListOfSevenAnd3() {
+        List<Integer> factors = primeFactors.generate(21);
+        List<Integer> expected = asList(3,7);
+
+        assertThat(factors, is(expected));
+    }
 }
