@@ -1,3 +1,5 @@
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,6 +11,10 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class PrimeFactorsTest {
 
+    private PrimeFactors primeFactors;
+
+
+
     private List<Integer> asList(int ... ints){
         List<Integer> list = new ArrayList<>();
         for(int i : ints){
@@ -18,10 +24,16 @@ public class PrimeFactorsTest {
         return list;
     }
 
+
+    @Before
+    public void setUp() throws Exception {
+        primeFactors = new PrimeFactors();
+    }
+
+
+
     @Test
     public void givenOneReturnsSingletonListContainingOne() {
-        PrimeFactors primeFactors = new PrimeFactors();
-
         List<Integer> factors = primeFactors.generate(1);
         List<Integer> expected = asList(1);
 
@@ -31,8 +43,6 @@ public class PrimeFactorsTest {
 
     @Test
     public void givenPrimeNumberReturnsSingletonListContainingOnlyThatNumber() {
-        PrimeFactors primeFactors = new PrimeFactors();
-
         List<Integer> factors = primeFactors.generate(17);
         List<Integer> expected = asList(17);
 
@@ -42,10 +52,17 @@ public class PrimeFactorsTest {
 
     @Test
     public void givenFourReturnsListOfTwoTwos() {
-        PrimeFactors primeFactors = new PrimeFactors();
-
         List<Integer> factors = primeFactors.generate(4);
         List<Integer> expected = asList(2, 2);
+
+        assertThat(factors, is(expected));
+    }
+
+
+    @Test
+    public void givenSixReturnsListOfTwoAndThree() {
+        List<Integer> factors = primeFactors.generate(6);
+        List<Integer> expected = asList(2, 3);
 
         assertThat(factors, is(expected));
     }
