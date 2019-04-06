@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -63,6 +64,15 @@ public class PrimeFactorsTest {
     public void givenSixReturnsListOfTwoAndThree() {
         List<Integer> factors = primeFactors.generate(6);
         List<Integer> expected = asList(2, 3);
+
+        assertThat(factors, is(expected));
+    }
+
+
+    @Test
+    public void givenEightReturnsListOfThreeTwos() {
+        List<Integer> factors = primeFactors.generate(8);
+        List<Integer> expected = asList(2, 2, 2);
 
         assertThat(factors, is(expected));
     }
